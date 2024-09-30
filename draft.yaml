@@ -1,0 +1,121 @@
+models:
+  
+  Resume:
+    name: sring:100 erquired
+    personal_id: id foreign nullable
+    user_id: id foreign required
+    relationships:
+      BelongsTo: User, Personal
+      HasMany: Education, Experience, Project, Skill, Language
+
+  Education:
+    user_id: id foreign required
+    name: string:100 required
+    school: string:100 nullable
+    date_from: date nullable
+    date_to: date nullable
+    description: longtext nullable
+    relationships:
+      BelongsToMany: Resume
+      BelongsTo: User
+
+  Experience:
+    user_id: id foreign required
+    job_title: string:100 required
+    company: string:100 nullable
+    date_from: date nullable
+    date_to: date nullable
+    description: longtext nullable
+    relationships:
+      BelongsToMany: Resume
+      BelongsTo: User
+
+  Project:
+    user_id: id foreign required
+    name: string:100 required
+    description: longtext nullable
+    relationships: 
+      BelongsToMany: Resume
+      BelongsTo: User
+
+  Skill:
+    user_id: id foreign required
+    name: string:50 required
+    level: enum:Beginner,Intermediate,Advanced,Expert nullable
+    relationships:
+      BelongsToMany: Resume
+      BelongsTo: User
+
+  Language:
+    user_id: id foreign required
+    name: enum:English,Spanish,Arabic,French,German required
+    level: enum:A1,A2,B1,B2,C1,C2,Working,Fluent,Native nullable
+    relationships:
+      BelongsToMany: Resume
+      BelongsTo: User
+
+  Personal:
+    user_id: id required
+    first_name: string:50 required
+    last_name: string:50 required
+    middle_name: string:50 nullable
+    first_phone: string:15 nullable
+    second_phone: string:15 nullable
+    email: mail nullable
+    address: longtext nullable
+    date_of_birth: date nullable
+    nationality: string:50 nullable
+    marital_status: bool default:0
+    gender: bool default:0
+    github: string nullable
+    linked_in: string nullable
+    instagram: string nullable
+    facebook: string nullable
+    behance: string nullable
+    relationships:
+      HasMany: Resume
+
+  ResumeEducation:
+    resume_id: id required
+    education_id: id required
+
+  ResumeExperience:
+    resume_id: id required
+    experience_id: id required
+
+  ResumeProject:
+    resume_id: id required
+    project_id: id required
+
+  ResumeSkill:
+    resume_id: id required
+    skill_id: id required
+
+  ResumeLanguage:
+    resume_id: id required
+    language_id: id required
+
+
+controllers:
+
+  Resume:
+    resource: index, show, create, edit, update, destroy, store
+
+  Education:
+    resource: index, show, create, edit, update, destroy, store
+
+  Experience:
+    resource: index, show, create, edit, update, destroy, store
+
+  Project:
+    resource: index, show, create, edit, update, destroy, store
+
+  Skill:
+    resource: index, show, create, edit, update, destroy, store
+
+  Language:
+    resource: index, show, create, edit, update, destroy, store
+
+  Personal:
+    resource: index, show, create, edit, update, destroy, store
+

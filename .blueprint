@@ -1,0 +1,113 @@
+created:
+    - app/Http/Controllers/ResumeController.php
+    - app/Http/Controllers/EducationController.php
+    - app/Http/Controllers/ExperienceController.php
+    - app/Http/Controllers/ProjectController.php
+    - app/Http/Controllers/SkillController.php
+    - app/Http/Controllers/LanguageController.php
+    - app/Http/Controllers/PersonalController.php
+    - database/factories/ResumeFactory.php
+    - database/factories/EducationFactory.php
+    - database/factories/ExperienceFactory.php
+    - database/factories/ProjectFactory.php
+    - database/factories/SkillFactory.php
+    - database/factories/LanguageFactory.php
+    - database/factories/PersonalFactory.php
+    - database/factories/ResumeEducationFactory.php
+    - database/factories/ResumeExperienceFactory.php
+    - database/factories/ResumeProjectFactory.php
+    - database/factories/ResumeSkillFactory.php
+    - database/factories/ResumeLanguageFactory.php
+    - database/migrations/2024_09_22_131524_create_resumes_table.php
+    - database/migrations/2024_09_22_131525_create_education_table.php
+    - database/migrations/2024_09_22_131526_create_experiences_table.php
+    - database/migrations/2024_09_22_131527_create_projects_table.php
+    - database/migrations/2024_09_22_131528_create_skills_table.php
+    - database/migrations/2024_09_22_131529_create_languages_table.php
+    - database/migrations/2024_09_22_131530_create_personals_table.php
+    - database/migrations/2024_09_22_131531_create_resume_education_table.php
+    - database/migrations/2024_09_22_131532_create_resume_experiences_table.php
+    - database/migrations/2024_09_22_131533_create_resume_projects_table.php
+    - database/migrations/2024_09_22_131534_create_resume_skills_table.php
+    - database/migrations/2024_09_22_131535_create_resume_languages_table.php
+    - database/migrations/2024_09_22_131536_create_education_resume_table.php
+    - database/migrations/2024_09_22_131537_create_experience_resume_table.php
+    - database/migrations/2024_09_22_131538_create_project_resume_table.php
+    - database/migrations/2024_09_22_131539_create_resume_skill_table.php
+    - database/migrations/2024_09_22_131540_create_language_resume_table.php
+    - app/Models/Resume.php
+    - app/Models/Education.php
+    - app/Models/Experience.php
+    - app/Models/Project.php
+    - app/Models/Skill.php
+    - app/Models/Language.php
+    - app/Models/Personal.php
+    - app/Models/ResumeEducation.php
+    - app/Models/ResumeExperience.php
+    - app/Models/ResumeProject.php
+    - app/Models/ResumeSkill.php
+    - app/Models/ResumeLanguage.php
+    - tests/Feature/Http/Controllers/ResumeControllerTest.php
+    - tests/Feature/Http/Controllers/EducationControllerTest.php
+    - tests/Feature/Http/Controllers/ExperienceControllerTest.php
+    - tests/Feature/Http/Controllers/ProjectControllerTest.php
+    - tests/Feature/Http/Controllers/SkillControllerTest.php
+    - tests/Feature/Http/Controllers/LanguageControllerTest.php
+    - tests/Feature/Http/Controllers/PersonalControllerTest.php
+    - app/Http/Requests/ResumeStoreRequest.php
+    - app/Http/Requests/ResumeUpdateRequest.php
+    - app/Http/Requests/EducationStoreRequest.php
+    - app/Http/Requests/EducationUpdateRequest.php
+    - app/Http/Requests/ExperienceStoreRequest.php
+    - app/Http/Requests/ExperienceUpdateRequest.php
+    - app/Http/Requests/ProjectStoreRequest.php
+    - app/Http/Requests/ProjectUpdateRequest.php
+    - app/Http/Requests/SkillStoreRequest.php
+    - app/Http/Requests/SkillUpdateRequest.php
+    - app/Http/Requests/LanguageStoreRequest.php
+    - app/Http/Requests/LanguageUpdateRequest.php
+    - app/Http/Requests/PersonalStoreRequest.php
+    - app/Http/Requests/PersonalUpdateRequest.php
+    - resources/views/resume/index.blade.php
+    - resources/views/resume/create.blade.php
+    - resources/views/resume/show.blade.php
+    - resources/views/resume/edit.blade.php
+    - resources/views/education/index.blade.php
+    - resources/views/education/create.blade.php
+    - resources/views/education/show.blade.php
+    - resources/views/education/edit.blade.php
+    - resources/views/experience/index.blade.php
+    - resources/views/experience/create.blade.php
+    - resources/views/experience/show.blade.php
+    - resources/views/experience/edit.blade.php
+    - resources/views/project/index.blade.php
+    - resources/views/project/create.blade.php
+    - resources/views/project/show.blade.php
+    - resources/views/project/edit.blade.php
+    - resources/views/skill/index.blade.php
+    - resources/views/skill/create.blade.php
+    - resources/views/skill/show.blade.php
+    - resources/views/skill/edit.blade.php
+    - resources/views/language/index.blade.php
+    - resources/views/language/create.blade.php
+    - resources/views/language/show.blade.php
+    - resources/views/language/edit.blade.php
+    - resources/views/personal/index.blade.php
+    - resources/views/personal/create.blade.php
+    - resources/views/personal/show.blade.php
+    - resources/views/personal/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    Resume: { name: 'sring:100 erquired', personal_id: 'id foreign nullable', user_id: 'id foreign required', relationships: { BelongsTo: 'User, Personal', HasMany: 'Education, Experience, Project, Skill, Language' } }
+    Education: { user_id: 'id foreign required', name: 'string:100 required', school: 'string:100 nullable', date_from: 'date nullable', date_to: 'date nullable', description: 'longtext nullable', relationships: { BelongsToMany: Resume, BelongsTo: User } }
+    Experience: { user_id: 'id foreign required', job_title: 'string:100 required', company: 'string:100 nullable', date_from: 'date nullable', date_to: 'date nullable', description: 'longtext nullable', relationships: { BelongsToMany: Resume, BelongsTo: User } }
+    Project: { user_id: 'id foreign required', name: 'string:100 required', description: 'longtext nullable', relationships: { BelongsToMany: Resume, BelongsTo: User } }
+    Skill: { user_id: 'id foreign required', name: 'string:50 required', level: 'enum:Beginner,Intermediate,Advanced,Expert nullable', relationships: { BelongsToMany: Resume, BelongsTo: User } }
+    Language: { user_id: 'id foreign required', name: 'enum:English,Spanish,Arabic,French,German required', level: 'enum:A1,A2,B1,B2,C1,C2,Working,Fluent,Native nullable', relationships: { BelongsToMany: Resume, BelongsTo: User } }
+    Personal: { first_name: 'string:50 required', last_name: 'string:50 required', middle_name: 'string:50 nullable', first_phone: 'string:15 nullable', second_phone: 'string:15 nullable', email: 'mail nullable', address: 'longtext nullable', date_of_birth: 'date nullable', nationality: 'string:50 nullable', marital_status: 'bool default:0', gender: 'bool default:0', github: 'string nullable', linked_in: 'string nullable', instagram: 'string nullable', facebook: 'string nullable', behance: 'string nullable', relationships: { HasMany: Resume } }
+    ResumeEducation: { resume_id: 'id required', education_id: 'id required' }
+    ResumeExperience: { resume_id: 'id required', experience_id: 'id required' }
+    ResumeProject: { resume_id: 'id required', project_id: 'id required' }
+    ResumeSkill: { resume_id: 'id required', skill_id: 'id required' }
+    ResumeLanguage: { resume_id: 'id required', language_id: 'id required' }

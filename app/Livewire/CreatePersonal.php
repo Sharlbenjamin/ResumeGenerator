@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Personal;
+use Illuminate\Container\Attributes\Auth;
 use Livewire\Component;
 
 class CreatePersonal extends Component
 {
     public $personal;
     
+    public $user;
     public $first_name;
     public $last_name;
     public $middle_name;
@@ -30,6 +32,7 @@ class CreatePersonal extends Component
 
     public function render()
     {
+        $this->user = Auth::user();
         return view('livewire.create-personal');
     }
 
@@ -37,6 +40,7 @@ class CreatePersonal extends Component
     {
         if($this->personal){
             $this->personal->update([
+                'user_id' => $this->user->id,
                 'first_name' => $this->first_name,
                 'last_name' => $this->last_name,
                 'middle_name' => $this->middle_name,
@@ -58,6 +62,7 @@ class CreatePersonal extends Component
             ]);
         }else{
             Personal::create([
+                'user_id' => $this->user->id,
                 'first_name' => $this->first_name,
                 'last_name' => $this->last_name,
                 'middle_name' => $this->middle_name,

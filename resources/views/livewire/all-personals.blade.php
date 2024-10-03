@@ -25,7 +25,8 @@
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
-                    @if (isset($personal->id))      
+                      @if ($personals->count() > 0)
+                      @foreach ($personals as $personal)
                       <tr class="divide-x divide-gray-200">
                           <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{$personal->first_name}}</td>
                           <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{$personal->last_name}}</td>
@@ -39,6 +40,7 @@
                             <a href="{{route('personals.edit', $personal->id)}}">Edit</a>
                           </td>
                         </tr>
+                        @endforeach
                     @else
                     <tr class="divide-x divide-gray-200">
                         <td colspan="5" class="whitespace-nowrap py-4 pl-4 text-center pr-4 text-xl font-medium text-sky-800 sm:pl-0">No Personals Added Yet Please 

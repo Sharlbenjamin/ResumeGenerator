@@ -35,7 +35,7 @@ class CreateProject extends Component
             $this->project->update([ 
                 'user_id' => $user_id,
                 'name' => $this->name,
-                'date' => $this->date,
+                'date' => $this->date ? $this->date : null,
                 'description' => $this->description,
             ]);
         }else{

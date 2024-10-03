@@ -27,8 +27,10 @@ class CreateEducation extends Component
         if($this->education){
             $this->name = $this->education->name;
             $this->school = $this->education->school;
-            $this->date_from = $this->education->date_from->format('Y-m-d');
-            $this->date_to = $this->education->date_to->format('Y-m-d');
+                $this->date_from = $this->education->date_from ? $this->education->date_from->format('Y-m-d') : '';
+            if($this->education->date_to){
+                $this->date_to = $this->education->date_to ? $this->education->date_to->format('Y-m-d') : '';
+            }
             $this->description = $this->education->description;
         }
     }
@@ -41,8 +43,8 @@ class CreateEducation extends Component
                 'user_id' => $user_id,
                 'name' => $this->name,
                 'school' => $this->school,
-                'date_from' => $this->date_from,
-                'date_to' => $this->date_to,
+                'date_from' => $this->date_from ? $this->date_from : null,
+                'date_to' => $this->date_to ? $this->date_to : null,
                 'description' => $this->description,
             ]);
         }else{

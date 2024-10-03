@@ -39,8 +39,8 @@ class CreateExperience extends Component
                 'user_id' => $user_id,
                 'job_title' => $this->job_title,
                 'company' => $this->company,
-                'date_from' => $this->date_from,
-                'date_to' => $this->date_to,
+                'date_from' => $this->date_from ? $this->date_from : null,
+                'date_to' => $this->date_to ? $this->date_to : null,
                 'description' => $this->description,
             ]);
         }else{    

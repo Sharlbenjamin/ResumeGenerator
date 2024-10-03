@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class AllPersonals extends Component
 {
-    public $personal;
+    public $personals;
     public $user;
 
     public function render()
@@ -18,6 +18,6 @@ class AllPersonals extends Component
     public function mount()
     {
         $this->user = Auth::user();
-        $this->personal = $this->user->personal;
+        $this->personals = $this->user->personals;
     }
 }

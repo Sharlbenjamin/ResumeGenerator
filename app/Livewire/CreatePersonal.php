@@ -48,7 +48,7 @@ class CreatePersonal extends Component
                 'second_phone' => $this->second_phone,
                 'email' => $this->email,
                 'address' => $this->address,
-                'date_of_birth' => $this->date_of_birth,
+                'date_of_birth' => $this->date_of_birth ? $this->date_of_birth : null,
                 'nationality' => $this->nationality,
                 'gender' => $this->gender,
                 'marital_status' => $this->marital_status,
@@ -96,7 +96,7 @@ class CreatePersonal extends Component
             $this->second_phone = $this->personal->second_phone;
             $this->email = $this->personal->email;
             $this->address  = $this->personal->address;
-            $this->date_of_birth    = $this->personal->date_of_birth->format('Y-m-d');
+            $this->date_of_birth    = $this->personal->date_of_birth ? $this->personal->date_of_birth->format('Y-m-d') : '';
             $this->nationality  = $this->personal->nationality;
             $this->gender   = $this->personal->gender;
             $this->marital_status   = $this->personal->marital_status;

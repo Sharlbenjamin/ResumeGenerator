@@ -65,9 +65,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function personal():HasOne
+    public function personals():HasMany
     {
-        return $this->hasOne(Personal::class);
+        return $this->hasMany(Personal::class);
     }
 
     public function educations(): HasMany

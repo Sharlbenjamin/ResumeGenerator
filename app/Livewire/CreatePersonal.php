@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Personal;
-use Illuminate\Container\Attributes\Auth;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CreatePersonal extends Component

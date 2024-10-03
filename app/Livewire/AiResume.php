@@ -9,7 +9,8 @@ use Livewire\Attributes\Reactive;
 class AiResume extends Component
 {
     
-    public $personal;
+    #[Reactive]
+    public $selectedPersonal;
     public $user;
     
     #[Reactive]

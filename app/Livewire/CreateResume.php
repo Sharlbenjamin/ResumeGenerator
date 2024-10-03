@@ -10,6 +10,7 @@ use App\Models\ResumeSkill;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Language;
+use App\Models\Personal;
 use App\Models\Project;
 use App\Models\Resume;
 use App\Models\Skill;
@@ -25,8 +26,9 @@ class CreateResume extends Component
     public $user;
 
     public $name;
+    
     public $personal;
-
+    public $selectedPersonal;
     public $educations = [];
     public $selectedEducations;
     public $experiences = [];
@@ -40,6 +42,7 @@ class CreateResume extends Component
 
     public function render()
     {
+        $this->selectedPersonal = Personal::find($this->personal);
         $this->selectedEducations = Education::whereIn('id', $this->educations)->get();
         $this->selectedExperiences = Experience::whereIn('id', $this->experiences)->get();
         $this->selectedSkills = Skill::whereIn('id', $this->skills)->get();
@@ -51,16 +54,16 @@ class CreateResume extends Component
     public function mount()
     {
         $this->user = Auth::user();
-        $this->personal = $this->user->personal;
         if($this->resume){
             $this->name = $this->resume->name;
-            $this->personal = $this->resume->personal;
+            $this->personal = $this->resume->personal_id;
             $this->skills = $this->resume->skills->pluck('id')->toArray();
             $this->educations = $this->resume->educations->pluck('id')->toArray();
             $this->experiences = $this->resume->experiences->pluck('id')->toArray();
             $this->projects = $this->resume->projects->pluck('id')->toArray();
             $this->languages = $this->resume->languages->pluck('id')->toArray();
 
+            $this->selectedPersonal = Personal::find($this->personal);
             $this->selectedEducations = Education::whereIn('id', $this->educations)->get();
             $this->selectedExperiences = Experience::whereIn('id', $this->experiences)->get();
             $this->selectedSkills = Skill::whereIn('id', $this->skills)->get();
@@ -74,6 +77,7 @@ class CreateResume extends Component
         if($this->resume){
             $this->resume->update([
                 'name' => $this->name,
+                'personal_id' => $this->personal,
             ]);
             foreach(ResumeEducation::where('resume_id', $this->resume->id)->get() as $entry){
                 $entry->delete();
@@ -124,7 +128,7 @@ class CreateResume extends Component
             $newResume = Resume::create([
                 'user_id' => $this->user->id,
                 'name' => $this->name,
-                'personal_id' => $this->user->personal->id,
+                'personal_id' => $this->personal,
             ]);
             foreach($this->selectedEducations as $entry){
                 ResumeEducation::create([
@@ -158,5 +162,11 @@ class CreateResume extends Component
             }
         }
         return redirect()->route('resumes.index');
+    }
+
+    public function DeleteResume()
+    {
+        $this->resume->delete();
+        return redirect()->route('dashboard');
     }
 }

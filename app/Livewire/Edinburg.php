@@ -10,8 +10,8 @@ class Edinburg extends Component
 {
     #[Reactive]
     public $resumeColor;
-
-    public $personal;
+    #[Reactive]
+    public $selectedPersonal;
     #[Reactive]
     public $user;
     #[Reactive]

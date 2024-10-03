@@ -36,7 +36,17 @@
         </div>
         <div class="col-span-6 print:col-span-12">
             <div class="print:hidden p-4 border-2 rounded-md m-2 bg-white grid grid-cols-12">
-                {{-- Experiences DD--}}
+                {{-- Personal Data DD--}}
+                <div class="px-4 py-3.5 text-left text-sm text-gray-900 print:hidden col-span-4">
+                    <label for="personal.personal">Select Your Personal Data</label>
+                    <select wire:model.live="personal" class="rounded-md w-full mt-3.5 p-1 pl-2 border-gray-300">
+                        <option value="">Select Personal Data</option>
+                        @foreach ($user->personals as $item)
+                            <option value="{{$item->id}}">{{$item->first_name}} {{$item->last_name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                {{-- Experiences DD --}}
                 <div class="px-4 py-3.5 text-left text-sm text-gray-900 print:hidden col-span-4">
                     <div x-data="{exps : false}">
                         <label id="listbox-label" class="block text-sm font-medium leading-6 text-gray-900">Select your Experiences</label>
@@ -205,10 +215,10 @@
             
             @if ($ResumeTemplate == 'AI')
             {{-- First Template --}}
-            <livewire:ai-resume :personal="$personal" :resumeColor="$resumeColor" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="ai-resume"/>
+            <livewire:ai-resume :selectedPersonal="$selectedPersonal" :resumeColor="$resumeColor" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="ai-resume"/>
             {{-- Second Template --}}
             @elseif($ResumeTemplate == 'Edinburg')
-             <livewire:edinburg :personal="$personal" :resumeColor="$resumeColor" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="edinburg"/>
+             <livewire:edinburg :selectedPersonal="$selectedPersonal" :resumeColor="$resumeColor" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="edinburg"/>
              @endif
             {{-- Buttons --}}
             <div class="pt-4 mr-4 justify-end flex space-x-2 sm:pr-0 print:hidden col-span-12">

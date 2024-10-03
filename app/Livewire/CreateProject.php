@@ -23,7 +23,7 @@ class CreateProject extends Component
     {
         if($this->project){
             $this->name = $this->project->name;
-            $this->date = $this->project->date->format('Y-m-d');
+            $this->date = $this->project->date ? $this->project->date->format('Y-m-d') : '';
             $this->description = $this->project->description;
         }
     }

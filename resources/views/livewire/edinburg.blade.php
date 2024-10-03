@@ -7,50 +7,52 @@
                 <div class="border ml-4"></div>
             </div>
             {{-- name --}}
+            @if(isset($selectedPersonal->id))
             <div class="pl-4 pr-4">
                 <h2 class="text-white font-bold">Name</h2>
-                <h2 class="text-white">{{$personal->first_name}} {{$personal->middle_name}} {{$personal->last_name}} </h2>
+                <h2 class="text-white">{{$selectedPersonal->first_name}} {{$selectedPersonal->middle_name}} {{$selectedPersonal->last_name}} </h2>
             </div>
             {{-- Email --}}
             <div class="pt-4 pl-4 pr-4">
                 <h2 class="text-white font-bold">Email</h2>
-                <p class="text-white text-wrap text-xs">{{$personal->email}}</p>
+                <p class="text-white text-wrap text-xs">{{$selectedPersonal->email}}</p>
             </div>
             {{-- phones --}}
             <div class="pt-4 pl-4 pr-4">
                 <h2 class="text-white font-bold">Phone Number</h2>
-                <p class="text-white">+2{{$personal->first_phone}}</p>
-                <p class="text-white text-wrap">+34{{$personal->second_phone}}</p>
+                <p class="text-white">{{$selectedPersonal->first_phone}}</p>
+                <p class="text-white text-wrap">{{$selectedPersonal->second_phone}}</p>
             </div>
             {{-- Links --}}
             <div class="pt-4 pl-4 pr-4">
                 <h2 class="text-white font-bold">Links</h2>
-                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$personal->linked_id}}">Linked In</a></p>
-                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$personal->github}}">Github</a></p>
-                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$personal->behance}}">Behance</a></p>
-                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$personal->instagram}}">Instagram</a></p>
-                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$personal->facebook}}">Facebook</a></p>
+                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->linked_id}}">Linked In</a></p>
+                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->github}}">Github</a></p>
+                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->behance}}">Behance</a></p>
+                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->instagram}}">Instagram</a></p>
+                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->facebook}}">Facebook</a></p>
             </div>
             {{-- address --}}
             <div class="pl-4 pr-4">
                 <h2 class="text-white font-bold">Address</h2>
-                <h4 class="text-white text-wrap">{{$personal->address}}</h4>
+                <h4 class="text-white text-wrap">{{$selectedPersonal->address}}</h4>
             </div>
             {{-- Gender --}}
             <div class="pt-4 pl-4 pr-4">
                 <h2 class="text-white font-bold">Gender</h2>
-                <p class="text-white text-wrap text-xs">{{$personal->gender}}</p>
+                <p class="text-white text-wrap text-xs">{{$selectedPersonal->gender}}</p>
             </div>
             {{-- nationality --}}
             <div class="pt-4 pl-4 pr-4">
                 <h2 class="text-white font-bold">Nationality</h2>
-                <p class="text-white text-wrap text-xs">{{$personal->nationality}}</p>
+                <p class="text-white text-wrap text-xs">{{$selectedPersonal->nationality}}</p>
             </div>
             {{-- Marital Status --}}
             <div class="pt-4 pl-4 pr-4">
                 <h2 class="text-white font-bold">Marital Status</h2>
-                <p class="text-white text-wrap text-xs">{{$personal->marital_status}}</p>
+                <p class="text-white text-wrap text-xs">{{$selectedPersonal->marital_status}}</p>
             </div>
+            @endif
             @if ($selectedLanguages->count() > 0)
             {{-- Languages --}}
             <div class="space-y-4 pr-4">
@@ -66,25 +68,27 @@
             @endif
         </div>
         {{-- Main Column --}}
+        @if(isset($selectedPersonal->id))
         <div class="col-span-7 space-y-4 p-4">
-            <h2 class="text-3xl font-serif">{{$personal->first_name}}
+            <h2 class="text-3xl font-serif">{{$selectedPersonal->first_name}}
                 <span class="font-bold">
-                    {{$personal->last_name}}
+                    {{$selectedPersonal->last_name}}
                 </span>
             </h2>
             <div class="border-b">
                 <p class="text-md font-bold">
-                    {{$personal->title}}
+                    {{$selectedPersonal->title}}
                  </p>
             </div>
             <div class="text-sm">
-                {{$personal->summary}}
+                {{$selectedPersonal->summary}}
             </div>
             <div class="border-b">
                 <p class="text-md font-bold">
                     Educations
                 </p>
             </div>
+            @endif
             @foreach ($selectedEducations as $education)
             <div class="">
                 <div class="flex space-between-max">

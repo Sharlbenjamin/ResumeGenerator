@@ -1,66 +1,68 @@
 <div class="p-4 border-2 rounded-md bg-white grid grid-cols-12">
-{{-- Personal --}}
+{{-- selectedPersonal --}}
+@if(isset($selectedPersonal->id))
 <div class="px-4 text-left text-sm text-gray-900 col-span-12 grid grid-cols-12">
     <div class="col-span-12 mb-4">
         <h1 class="text-5xl">
-            {{$personal->first_name}}
-            <span class="font-bold">{{$personal->last_name}}</span>
+            {{$selectedPersonal->first_name}}
+            <span class="font-bold">{{$selectedPersonal->last_name}}</span>
         </h1>
     </div>
     <div class="col-span-4">
-        <h3 class="font-bold text-xl text-{{$resumeColor}}-800">{{$personal->title}}</h3>
+        <h3 class="font-bold text-xl text-{{$resumeColor}}-800">{{$selectedPersonal->title}}</h3>
         <h2 class="mt-2 font-medium text-md">
             <x-heroicon-o-phone class="inline h-4"/>
-            {{$personal->first_phone}}</h2>
+            {{$selectedPersonal->first_phone}}</h2>
         <h2 class="mt-2 font-medium text-md">
             <x-heroicon-o-phone class="inline h-4"/>
-            {{$personal->second_phone}}</h2>
+            {{$selectedPersonal->second_phone}}</h2>
     </div>
+    @endif
     <div class="col-span-4 px-10">
-        @if (isset($personal->email))
+        @if (isset($selectedPersonal->email))
         <h2 class="font-medium text-md">
             <x-heroicon-c-envelope-open class="h-4 inline "/>
-            {{$personal->email}}
+            {{$selectedPersonal->email}}
         </h2>
             @endif
-            @if (isset($personal->nationality))
+            @if (isset($selectedPersonal->nationality))
         <h2 class="font-medium text-md">
             <x-heroicon-o-user class="inline h-4"/>
-            {{$personal->nationality}}
+            {{$selectedPersonal->nationality}}
         </h2>
             @endif
-            @if (isset($personal->date_of_birth))
+            @if (isset($selectedPersonal->date_of_birth))
         <h2 class="font-medium text-md">
             <x-heroicon-o-calendar class="inline h-4"/>
-            {{$personal->date_of_birth->format('d-m-Y')}}
+            {{$selectedPersonal->date_of_birth->format('d-m-Y')}}
         </h2>
         @endif
         </h2>
     </div>
     <div class="col-span-4 px-20 grid-cols-1 grid">
-        @if (isset($personal->linked_in))
-        <a class="font-bold text-{{$resumeColor}}-700" href="{{$personal->linked_in}}">Linked In</a>
+        @if (isset($selectedPersonal->linked_in))
+        <a class="font-bold text-{{$resumeColor}}-700" href="{{$selectedPersonal->linked_in}}">Linked In</a>
         @endif
-        @if (isset($personal->github))
-        <a class="font-bold text-{{$resumeColor}}-700" href="{{$personal->github}}">GitHub</a>
+        @if (isset($selectedPersonal->github))
+        <a class="font-bold text-{{$resumeColor}}-700" href="{{$selectedPersonal->github}}">GitHub</a>
         @endif
-        @if (isset($personal->behance))
-        <a class="font-bold text-{{$resumeColor}}-700" href="{{$personal->behance}}">Behance</a>
+        @if (isset($selectedPersonal->behance))
+        <a class="font-bold text-{{$resumeColor}}-700" href="{{$selectedPersonal->behance}}">Behance</a>
         @endif
-        @if (isset($personal->instagram))
-        <a class="font-bold text-{{$resumeColor}}-700" href="{{$personal->instagram}}">Instagram</a>
+        @if (isset($selectedPersonal->instagram))
+        <a class="font-bold text-{{$resumeColor}}-700" href="{{$selectedPersonal->instagram}}">Instagram</a>
         @endif
-        @if (isset($personal->facebook))
-        <a class="font-bold text-{{$resumeColor}}-700" href="{{$personal->facebook}}">Facebook</a>
+        @if (isset($selectedPersonal->facebook))
+        <a class="font-bold text-{{$resumeColor}}-700" href="{{$selectedPersonal->facebook}}">Facebook</a>
         @endif
     </div>
 </div>
 {{-- Summary --}}
-@if (isset($personal->summary))
+@if (isset($selectedPersonal->summary))
 <div class="px-4 py-3.5 text-left text-sm text-gray-900 col-span-12">
     <h2 class="text-xl text-{{$resumeColor}}-800 font-bold">Summary</h2>
     <div class="border w-full border-{{$resumeColor}}-700"></div>
-    <h2 class="col-span-12 mt-2">{{$personal->summary}}</h2>
+    <h2 class="col-span-12 mt-2">{{$selectedPersonal->summary}}</h2>
 </div>
 @endif 
 {{-- Experiences --}}

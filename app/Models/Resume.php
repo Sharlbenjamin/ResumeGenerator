@@ -46,26 +46,26 @@ class Resume extends Model
 
     public function educations(): BelongsToMany
     {
-        return $this->belongsToMany(Education::class, 'Resume_Education');
+        return $this->belongsToMany(Education::class, 'resume_education');
     }
 
     public function experiences(): BelongsToMany
     {
-        return $this->belongsToMany(Experience::class, 'Resume_Experiences');
+        return $this->belongsToMany(Experience::class, 'resume_experiences');
     }
 
     public function projects(): BelongsToMany
     {
-        return $this->belongsToMany(Project::class, 'Resume_Projects');
+        return $this->belongsToMany(Project::class, 'resume_projects');
     }
 
     public function skills(): BelongsToMany
     {
-        return $this->belongsToMany(Skill::class, 'Resume_Skills');
+        return $this->belongsToMany(Skill::class, 'resume_skills');
     }
 
     public function languages(): BelongsToMany
     {
-        return $this->belongsToMany(Language::class, 'Resume_Languages');
+        return $this->belongsToMany(Language::class, 'resume_languages');
     }
 }

@@ -8,7 +8,7 @@
                     <p class="mt-2 text-sm text-center text-gray-700">A list of all Your Resumes</p>
                   </div>
                   <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                    <a href="{{route('resumes.create')}}" class="block rounded-md bg-sky-600 px-3 py-2 text-center text-sm text-center font-bold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">Make a New Resume</a>
+                    <a href="{{route('resumes.create')}}" class="block rounded-md bg-sky-600 px-3 py-2 text-sm text-center font-bold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600">Make a New Resume</a>
                   </div>
                 </div>
                 <div class="mt-8 flow-root">
@@ -17,13 +17,13 @@
                       <table class="min-w-full divide-y divide-gray-300">
                         <thead>
                           <tr class="divide-x divide-gray-200">
-                            <th scope="col" class="py-3.5 pl-4 pr-4 text-center text-sm text-center font-semibold text-gray-900 sm:pl-0">Resume Name</th>
-                            <th scope="col" class="py-3.5 pl-4 pr-4 text-center text-sm text-center font-semibold text-gray-900 sm:pl-0">Education</th>
-                            <th scope="col" class="py-3.5 pl-4 pr-4 text-center text-sm text-center font-semibold text-gray-900 sm:pl-0">Experience</th>
-                            <th scope="col" class="py-3.5 pl-4 pr-4 text-center text-sm text-center font-semibold text-gray-900 sm:pl-0">Projects</th>
-                            <th scope="col" class="py-3.5 pl-4 pr-4 text-center text-sm text-center font-semibold text-gray-900 sm:pl-0">Skills</th>
-                            <th scope="col" class="py-3.5 pl-4 pr-4 text-center text-sm text-center font-semibold text-gray-900 sm:pl-0">Languages</th>
-                            <th scope="col" class="text-right text-sm text-center font-semibold text-gray-900 sm:pr-0">Edit</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-4 text-sm text-center font-semibold text-gray-900 sm:pl-0">Resume Name</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-4 text-sm text-center font-semibold text-gray-900 sm:pl-0">Education</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-4 text-sm text-center font-semibold text-gray-900 sm:pl-0">Experience</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-4 text-sm text-center font-semibold text-gray-900 sm:pl-0">Projects</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-4 text-sm text-center font-semibold text-gray-900 sm:pl-0">Skills</th>
+                            <th scope="col" class="py-3.5 pl-4 pr-4 text-sm text-center font-semibold text-gray-900 sm:pl-0">Languages</th>
+                            <th scope="col" class="text-right text-sm font-semibold text-gray-900 sm:pr-0">Edit</th>
                           </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white">
@@ -31,12 +31,38 @@
                         @foreach ($resumes as $resume)
                         <tr class="divide-x divide-gray-200">
                             <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-center font-medium text-gray-900 sm:pl-0">{{$resume->name}}</td>
-                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">{{$resume->educations->count()}}</td>
-                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">{{$resume->experiences->count()}}</td>
-                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">{{$resume->projects->count()}}</td>
-                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">{{$resume->skills->count()}}</td>
-                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">{{$resume->languages->count()}}</td>
-                            <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-center text-right text-sky-500 sm:pr-0">
+                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">
+                              @foreach($resume->educations as $education)
+                              <p>{{$loop->iteration}}) {{$education->name}}</p>
+                              @endforeach
+                            </td>
+                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">
+                              @foreach($resume->experiences as $exp)
+                              <p>{{$loop->iteration}}) {{$exp->job_title}} at {{$exp->company}}</p>
+                              @endforeach
+                            </td>
+                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">
+                              @foreach ($resume->projects as $project)
+                                  <p>
+                                    {{$loop->iteration}}) {{$project->name}}
+                                  </p>
+                              @endforeach
+                            </td>
+                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">
+                              @foreach ($resume->skills as $skill)
+                                  <p>
+                                    {{$loop->iteration}}) {{$skill->name}}
+                                  </p>
+                              @endforeach
+                            </td>
+                            <td class="text-wrap p-4 text-sm text-center text-gray-500 max-w-40">
+                              @foreach ($resume->languages as $language)
+                                  <p>
+                                    {{$loop->iteration}}) {{$language->name}}
+                                  </p>
+                              @endforeach
+                            </td>
+                            <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-right text-sky-500 sm:pr-0">
                                 <a href="{{route('resumes.edit', $resume->id)}}">Edit</a>
                             </td>
                         </tr>

@@ -17,7 +17,7 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="font-sans antialiased bg-sky-950">
+    <body class="font-sans antialiased bg-sky-950 print:bg-white">
                 @if(isset($resume))
                 <livewire:create-resume :resume="$resume">
                 @else

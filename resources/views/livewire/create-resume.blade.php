@@ -11,9 +11,9 @@
                 <p>Resume Color</p>
                 <select wire:model.live="resumeColor" class="w-full border-2 border-gray-200 hover:border-sky-400 rounded-md">
                     <option value="gray">Black & White</option>
-                    <option value="sky">Blue</option>
-                    <option value="green">Green</option>
-                    <option value="rose">Red</option>
+                    <option value="#0369a1">Blue</option>
+                    <option value="#15803d">Green</option>
+                    <option value="#be185d">Pink</option>
                 </select>
             </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="border mt-2"></div>
             <p class="mt-10 text-white text-4xl">After You finihs your resume oress Cmd + P or Ctrl + P  and save your Resume</p>
         </div>
-        <div class="col-span-6 print:col-span-12">
+        <div class="col-span-6 print:col-span-12 print:bg-white">
             <div class="print:hidden p-4 border-2 rounded-md m-2 bg-white grid grid-cols-12">
                 {{-- Personal Data DD--}}
                 <div class="px-4 py-3.5 text-left text-sm text-gray-900 print:hidden col-span-4">

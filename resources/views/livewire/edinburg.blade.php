@@ -1,7 +1,7 @@
 <div class="bg-white rounded-md m-2">
     <div class="grid grid-cols-10">
         {{-- Side Bar --}}
-        <div class="col-span-3 p-4 bg-{{$resumeColor}}-800 print:bg-gray-700 space-y-4">
+        <div class="col-span-3 p-4 space-y-4 bg-rose-700">
             <div class="">
                 <h2 class="text-white font-bold pt-4 pl-4">Personal</h2>
                 <div class="border ml-4"></div>
@@ -26,11 +26,21 @@
             {{-- Links --}}
             <div class="pt-4 pl-4 pr-4">
                 <h2 class="text-white font-bold">Links</h2>
-                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->linked_id}}">Linked In</a></p>
+                @if (isset($selectedPersonal->linked_in))
+                <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->linked_in}}">Linked In</a></p>
+                @endif
+                @if (isset($selectedPersonal->github))
                 <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->github}}">Github</a></p>
+                @endif
+                @if (isset($selectedPersonal->behance))
                 <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->behance}}">Behance</a></p>
+                @endif
+                @if (isset($selectedPersonal->instagram))
                 <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->instagram}}">Instagram</a></p>
+                @endif
+                @if (isset($selectedPersonal->facebook))
                 <p class="text-blue-400 font-medium underline-offset-1 underline"><a href="{{$selectedPersonal->facebook}}">Facebook</a></p>
+                @endif
             </div>
             {{-- address --}}
             <div class="pl-4 pr-4">

@@ -1,7 +1,7 @@
 <div class="bg-white rounded-md m-2">
     <div class="grid grid-cols-10">
         {{-- Side Bar --}}
-        <div class="col-span-3 p-4 space-y-4 bg-rose-700">
+        <div class="col-span-3 p-4 space-y-4 {{$resumeBg}}">
             <div class="">
                 <h2 class="text-white font-bold pt-4 pl-4">Personal</h2>
                 <div class="border ml-4"></div>
@@ -84,17 +84,23 @@
                 <span class="font-bold">
                     {{$selectedPersonal->last_name}}
                 </span>
-            </h2>
-            <div class="border-b">
-                <p class="text-md font-bold">
+                <br>
+                <span class="text-lg">
                     {{$selectedPersonal->title}}
+                </span>
+            </h2>
+            <div class="border-b-2 {{$resumeBorder}}">
+                <p class="text-md font-bold {{$resumeText}}">
+                    Summary
                  </p>
             </div>
             <div class="text-sm">
                 {{$selectedPersonal->summary}}
             </div>
-            <div class="border-b">
-                <p class="text-md font-bold">
+            @endif
+            @if($selectedEducations->count() > 0)
+            <div class="border-b-2 {{$resumeBorder}}">
+                <p class="text-md font-bold {{$resumeText}} ">
                     Educations
                 </p>
             </div>
@@ -111,11 +117,13 @@
                 </p>
             </div>
             @endforeach
-            <div class="border-b">
-                <p class="text-md font-bold">
+            @if($selectedExperiences->count() > 0)
+            <div class="border-b-2 {{$resumeBorder}}">
+                <p class="text-md font-bold {{$resumeText}}">
                     Experiences
                 </p>
             </div>
+            @endif
             @foreach ($selectedExperiences as $exp)
             <div class="">
                 <div class="flex space-between-max">
@@ -128,11 +136,31 @@
                 </p>
             </div>
             @endforeach
-            <div class="border-b">
-                <p class="text-md font-bold">
+            @if($selectedProjects->count() > 0)
+            <div class="border-b-2 {{$resumeBorder}}">
+                <p class="text-md font-bold {{$resumeText}}">
+                    Projects
+                </p>
+            </div>
+            @endif
+            @foreach ($selectedProjects as $project)
+            <div class="">
+                <div class="flex space-between-max">
+                    <p class="text-wrap font-bold text-lg">{{$project->name}}</p>
+                    <p class="text-wrap text-xs grow text-right">{{$project->date->format('M-Y')}}</p>
+                </div>
+                <p class="text-sm">
+                    {{$project->description}}
+                </p>
+            </div>
+            @endforeach
+            @if($selectedSkills->count() > 0)
+            <div class="border-b-2 {{$resumeBorder}}">
+                <p class="text-md font-bold {{$resumeText}}">
                     Skills
                 </p>
             </div>
+            @endif
             @foreach ($selectedSkills as $skill)
             <div class="grid grid-cols-3">
                 <p class="text-wrap text-xs">{{$skill->name}}</p>

@@ -9,7 +9,13 @@ use Livewire\Attributes\Reactive;
 class Edinburg extends Component
 {
     #[Reactive]
-    public $resumeColor = 'rose';
+    public $resumeColor;
+    #[Reactive]
+    public $resumeText;
+    #[Reactive]
+    public $resumeBg;
+    #[Reactive]
+    public $resumeBorder;
     #[Reactive]
     public $selectedPersonal;
     #[Reactive]

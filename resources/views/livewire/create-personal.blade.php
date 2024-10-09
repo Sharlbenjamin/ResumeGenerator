@@ -24,7 +24,9 @@
         <x-input wire:model.live="first_phone" class="col-span-6 w-full border-2 hover:border-sky-400"></x-input>
     </div>
     <div class="col-span-6 flex space-x-4 p-4">
-        <h2 class="text-sky-600 font-bold col-span-6">Second Phone</h2>
+        <h2 class="text-sky-600 font-bold col-span-6">Second Phone 
+            <span class="text-xs text-gray-400">Optional</span>
+        </h2>
         <x-input wire:model.live="second_phone" class="col-span-6 w-full border-2 hover:border-sky-400"></x-input>
     </div>
     <div class="col-span-12 grid-cols-12 grid p-4">
@@ -42,7 +44,7 @@
     <div class="col-span-12 border-gray-900 border mb-4"></div>
     {{-- Job Title --}}
     <div class="col-span-12 grid-cols-12 grid p-4">
-        <h2 class="col-span-2  pt-2 text-sky-600 font-bold">title</h2>
+        <h2 class="col-span-2  pt-2 text-sky-600 font-bold">Title *</h2>
         <x-input wire:model.live="title" class="col-span-8 rounded-md border-gray-200 border-2 hover:border-sky-400"></x-input>
     </div>
     <h2 class="col-span-12 text-xl font-bold text-sky-600 mt-2">Other Personal Data</h2>

@@ -17,7 +17,7 @@
                     <thead>
                       <tr class="divide-x divide-gray-200">
                         <th scope="col" class="py-3.5 pl-4 pr-4 text-sm text-center font-semibold text-gray-900 sm:pl-0">Major</th>
-                        <th scope="col" class="px-4 py-3.5 text-sm text-center font-semibold text-gray-900">School</th>
+                        <th scope="col" class="px-4 py-3.5 text-sm text-center font-semibold text-gray-900">School / University</th>
                         <th scope="col" class="px-4 py-3.5 text-sm text-center font-semibold text-gray-900">Start Date</th>
                         <th scope="col" class="px-4 py-3.5 text-sm text-center font-semibold text-gray-900">End Date</th>
                         <th scope="col" class="px-4 py-3.5 text-sm text-center font-semibold text-gray-900">Description</th>

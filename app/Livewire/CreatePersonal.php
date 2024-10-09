@@ -38,6 +38,15 @@ class CreatePersonal extends Component
 
     public function CreatePersonal()
     {
+        if($this->first_name){
+            $this->first_name = ucfirst($this->first_name);
+        }
+        if($this->last_name){
+            $this->last_name = ucfirst($this->last_name);
+        }
+        if($this->middle_name){
+            $this->middle_name = ucfirst($this->middle_name);
+        }
         if($this->personal){
             $this->personal->update([
                 'user_id' => $this->user->id,

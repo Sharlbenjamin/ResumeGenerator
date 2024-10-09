@@ -15,6 +15,12 @@ class AiResume extends Component
     
     #[Reactive]
     public $resumeColor;
+    #[Reactive]
+    public $resumeText;
+    #[Reactive]
+    public $resumeBg;
+    #[Reactive]
+    public $resumeBorder;
     
     #[Reactive]
     public $selectedEducations;

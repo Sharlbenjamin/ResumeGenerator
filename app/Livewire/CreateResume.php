@@ -21,11 +21,28 @@ class CreateResume extends Component
 {
     public $resume;
     public $resumeColor = 'gray';
+    public $resumeText = 'text-gray-700';
+    public $resumeBg = 'bg-gray-700';
+    public $resumeBorder = 'border-gray-700';
     public $ResumeTemplate = 'Edinburg';
     
     public $user;
 
     public $name;
+
+    public $personalDD;
+    public $personalSearch;
+    public $skillsDD;
+    public $skillSearch;
+    public $educationsDD;
+    public $educationSearch;
+    public $experiencesDD;
+    public $experienceSearch;
+    public $projectsDD;
+    public $projectSearch;
+    public $languagesDD;
+    public $languageSearch;
+
     
     public $personal;
     public $selectedPersonal;
@@ -42,12 +59,25 @@ class CreateResume extends Component
 
     public function render()
     {
+
+        $this->resumeText = 'text-'.$this->resumeColor.'-700';
+        $this->resumeBorder = 'border-'.$this->resumeColor.'-700';
+        $this->resumeBg = 'bg-'.$this->resumeColor.'-700';
+
         $this->selectedPersonal = Personal::find($this->personal);
         $this->selectedEducations = Education::whereIn('id', $this->educations)->get();
         $this->selectedExperiences = Experience::whereIn('id', $this->experiences)->get();
         $this->selectedSkills = Skill::whereIn('id', $this->skills)->get();
         $this->selectedProjects = Project::whereIn('id', $this->projects)->get();
         $this->selectedLanguages = Language::whereIn('id', $this->languages)->get();
+
+        $this->personalDD = personal::where('title', 'LIKE', '%'.$this->personalSearch.'%')->where('user_id', $this->user->id)->get();
+        $this->skillsDD = skill::where('name', 'LIKE', '%'.$this->skillSearch.'%')->where('user_id', $this->user->id)->get();
+        $this->educationsDD = education::where('name', 'LIKE', '%'.$this->educationSearch.'%')->where('user_id', $this->user->id)->get();
+        $this->experiencesDD = experience::where('job_title', 'LIKE', '%'.$this->experienceSearch.'%')->where('user_id', $this->user->id)->get();
+        $this->projectsDD = project::where('name', 'LIKE', '%'.$this->projectSearch.'%')->where('user_id', $this->user->id)->get();
+        $this->languagesDD = language::where('name', 'LIKE', '%'.$this->languageSearch.'%')->where('user_id', $this->user->id)->get();
+        
         return view('livewire.create-resume');
     }
 
@@ -69,6 +99,13 @@ class CreateResume extends Component
             $this->selectedSkills = Skill::whereIn('id', $this->skills)->get();
             $this->selectedProjects = Project::whereIn('id', $this->projects)->get();
             $this->selectedLanguages = Language::whereIn('id', $this->languages)->get();
+
+            $this->personalDD = personal::all();
+            $this->skillsDD = skill::all();
+            $this->educationsDD = education::all();
+            $this->experiencesDD = experience::all();
+            $this->projectsDD = project::all();
+            $this->languagesDD = language::all();
         }
     }
 

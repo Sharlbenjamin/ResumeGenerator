@@ -1,11 +1,11 @@
 <div class="max-w-xl mx-auto p-4 border-2 rounded-md m-2">
 
     <div class="px-4 py-3.5 text-left text-sm text-gray-900">
-        <p>Name</p>
+        <p>Name *</p>
         <x-input wire:model.live="name" class="w-full hover:border-sky-400 border-2"></x-input>
     </div>
     <div class="px-4 py-3.5 text-left text-sm text-gray-900">
-        <p>School</p>
+        <p>School / University *</p>
         <x-input wire:model.live="school" class="w-full hover:border-sky-400 border-2"></x-input>
     </div>
     <div class="px-4 py-3.5 text-left text-sm  text-gray-900">

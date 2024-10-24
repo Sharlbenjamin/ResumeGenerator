@@ -167,13 +167,13 @@
                 <div class="my-auto">
                     <div class="rounded-full bg-gray-200">
                         @if ($skill->level == 'Beginner')
-                        <div class="border-2 rounded-full border-{{$resumeColor}}-700" style="width: 25%"></div>
+                        <div class="border-2 rounded-full {{$resumeBorder}}" style="width: 25%"></div>
                         @elseif($skill->level == 'Intermediate')
-                        <div class="border-2 rounded-full border-{{$resumeColor}}-700" style="width: 50%"></div>
+                        <div class="border-2 rounded-full {{$resumeBorder}}" style="width: 50%"></div>
                         @elseif($skill->level == 'Advanced')
-                        <div class="border-2 rounded-full border-{{$resumeColor}}-700" style="width: 75%"></div>
+                        <div class="border-2 rounded-full {{$resumeBorder}}" style="width: 75%"></div>
                         @elseif($skill->level == 'Expert')
-                        <div class="border-2 rounded-full border-{{$resumeColor}}-700" style="width: 100%"></div>
+                        <div class="border-2 rounded-full {{$resumeBorder}}" style="width: 100%"></div>
                         @endif
                     </div>
                 </div>

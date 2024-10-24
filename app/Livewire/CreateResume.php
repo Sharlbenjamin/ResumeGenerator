@@ -20,11 +20,11 @@ use Livewire\Component;
 class CreateResume extends Component
 {
     public $resume;
-    public $resumeColor = 'gray';
-    public $resumeText = 'text-gray-700';
-    public $resumeBg = 'bg-gray-700';
-    public $resumeBorder = 'border-gray-700';
-    public $ResumeTemplate = 'Edinburg';
+    public $resumeColor;
+    public $resumeText;
+    public $resumeBg;
+    public $resumeBorder;
+    public $ResumeTemplate;
     
     public $user;
 

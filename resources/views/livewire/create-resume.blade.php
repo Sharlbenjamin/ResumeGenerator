@@ -1,15 +1,16 @@
 <div class="">
     <div class="grid grid-cols-12 print:hidden">
         <div class="col-span-3">
-            <div class="px-4 py-3.5 text-left text-sm text-gray-900">
-                <p>Resume Name</p>
-                <x-input wire:model.live="name" class="w-full hover:border-sky-400 border-2"></x-input>
+            <div class="px-4 py-3.5 text-left text-sm ">
+                <p class="text-white pb-2">Resume Name</p>
+                <x-input wire:model.live="name" required class="w-full hover:border-sky-400 border-2"></x-input>
             </div>
         </div>
         <div class="col-span-3">
-            <div class="px-4 py-3.5 text-left text-sm text-gray-900">
-                <p>Resume Color</p>
+            <div class="px-4 py-3.5 text-left text-sm ">
+                <p class="text-white pb-2">Resume Color</p>
                 <select wire:model.live="resumeColor" class="w-full border-2 border-gray-200 hover:border-sky-400 rounded-md">
+                    <option value="">Select Color</option>
                     <option value="gray">Black & White</option>
                     <option value="sky">Blue</option>
                     <option value="teal">Green</option>
@@ -18,9 +19,10 @@
             </div>
         </div>
         <div class="col-span-3">
-            <div class="px-4 py-3.5 text-left text-sm text-gray-900">
-                <p>Resume Type</p>
+            <div class="px-4 py-3.5 text-left text-sm ">
+                <p class="text-white pb-2">Resume Type</p>
                 <select wire:model.live="ResumeTemplate" class="w-full border-2 border-gray-200 hover:border-sky-400 rounded-md">
+                    <option value="">Select Template</option>
                     <option value="Edinburg">Edinburg</option>
                     <option value="Harvard">Harvard</option>
                     <option value="AI">AI</option>
@@ -212,14 +214,46 @@
                 </div>
             </div>
             </div>
-            
-            @if ($ResumeTemplate == 'AI')
-            {{-- First Template --}}
-            <livewire:ai-resume :selectedPersonal="$selectedPersonal" :resumeColor="$resumeColor" :resumeBorder="$resumeBorder" :resumeBg="$resumeBg" :resumeText="$resumeText" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="ai-resume"/>
-            {{-- Second Template --}}
-            @elseif($ResumeTemplate == 'Edinburg')
-             <livewire:edinburg :selectedPersonal="$selectedPersonal" :resumeColor="$resumeColor" :resumeBorder="$resumeBorder" :resumeBg="$resumeBg" :resumeText="$resumeText" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="edinburg"/>
-             @endif
+            @if ($ResumeTemplate == 'AI')  {{--AI Template--}}
+                @if($resumeColor == 'gray')
+                <livewire:ai-resume :selectedPersonal="$selectedPersonal" :resumeBorder="'border-gray-700'" :resumeBg="'bg-gray-700'" :resumeText="'text-gray-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="ai-resume-gray"/>
+                @endif
+                @if($resumeColor == 'sky')
+                <livewire:ai-resume :selectedPersonal="$selectedPersonal" :resumeBorder="'border-sky-700'" :resumeBg="'bg-sky-700'" :resumeText="'text-sky-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="ai-resume-sky"/>
+                @endif
+                @if($resumeColor == 'teal')
+                <livewire:ai-resume :selectedPersonal="$selectedPersonal" :resumeBorder="'border-teal-700'" :resumeBg="'bg-teal-700'" :resumeText="'text-teal-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="ai-resume-green"/>
+                @endif
+                @if($resumeColor == 'pink')
+                <livewire:ai-resume :selectedPersonal="$selectedPersonal" :resumeBorder="'border-rose-700'" :resumeBg="'bg-rose-700'" :resumeText="'text-rose-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="ai-resume-pink"/>
+                @endif
+            @elseif($ResumeTemplate == 'Edinburg')  {{--Ediburg Template--}}
+                @if($resumeColor == 'gray')
+                <livewire:edinburg :selectedPersonal="$selectedPersonal" :resumeBorder="'border-gray-700'" :resumeBg="'bg-gray-700'" :resumeText="'text-gray-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="edinburg-gray"/>
+                @endif
+                @if($resumeColor == 'sky')
+                <livewire:edinburg :selectedPersonal="$selectedPersonal" :resumeBorder="'border-sky-700'" :resumeBg="'bg-sky-700'" :resumeText="'text-sky-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="edinburg-sky"/>
+                @endif
+                @if($resumeColor == 'teal')
+                <livewire:edinburg :selectedPersonal="$selectedPersonal" :resumeBorder="'border-teal-700'" :resumeBg="'bg-teal-700'" :resumeText="'text-teal-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="edinburg-green"/>
+                @endif
+                @if($resumeColor == 'pink')
+                <livewire:edinburg :selectedPersonal="$selectedPersonal" :resumeBorder="'border-pink-700'" :resumeBg="'bg-pink-700'" :resumeText="'text-pink-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="edinburg-pink"/>
+                @endif
+            @elseif($ResumeTemplate == 'Harvard')  {{--Haravard Template--}}
+                @if($resumeColor == 'gray')
+                <livewire:harvard :selectedPersonal="$selectedPersonal" :resumeBorder="'border-gray-700'" :resumeBg="'bg-gray-700'" :resumeText="'text-gray-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="harvard-gray"/>
+                @endif
+                @if($resumeColor == 'sky')
+                <livewire:harvard :selectedPersonal="$selectedPersonal" :resumeBorder="'border-sky-700'" :resumeBg="'bg-sky-700'" :resumeText="'text-sky-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="harvard-sky"/>
+                @endif
+                @if($resumeColor == 'teal')
+                <livewire:harvard :selectedPersonal="$selectedPersonal" :resumeBorder="'border-teal-700'" :resumeBg="'bg-teal-700'" :resumeText="'text-teal-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="harvard-teal"/>
+                @endif
+                @if($resumeColor == 'pink')
+                <livewire:harvard :selectedPersonal="$selectedPersonal" :resumeBorder="'border-pink-700'" :resumeBg="'bg-pink-700'" :resumeText="'text-pink-700'" :selectedEducations="$selectedEducations" :selectedExperiences="$selectedExperiences" :selectedSkills="$selectedSkills" :selectedProjects="$selectedProjects" :selectedLanguages="$selectedLanguages" wire:key="harvard-pink"/>
+                @endif
+            @endif
             {{-- Buttons --}}
             <div class="pt-4 mr-4 justify-end flex space-x-2 sm:pr-0 print:hidden col-span-12">
                 <x-button wire:click="SaveResume">{{$resume ? 'Update' : 'Submit'}}</x-button>

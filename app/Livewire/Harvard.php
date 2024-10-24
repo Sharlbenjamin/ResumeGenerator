@@ -2,22 +2,23 @@
 
 namespace App\Livewire;
 
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\Reactive;
 
-class AiResume extends Component
+class Harvard extends Component
 {
-    
+    #[Reactive]
+    public $resumeColor;
+    #[Reactive]
+    public $resumeText;
+    #[Reactive]
+    public $resumeBg;
+    #[Reactive]
+    public $resumeBorder;
     #[Reactive]
     public $selectedPersonal;
+    #[Reactive]
     public $user;
-    
-    public $resumeColor;
-    public $resumeText;
-    public $resumeBg;
-    public $resumeBorder;
-    
     #[Reactive]
     public $selectedEducations;
     #[Reactive]
@@ -28,14 +29,8 @@ class AiResume extends Component
     public $selectedProjects;
     #[Reactive]
     public $selectedLanguages;
-
     public function render()
     {
-        return view('livewire.ai-resume');
-    }
-
-    public function mount()
-    {
-        $this->user = Auth::user();
+        return view('livewire.harvard');
     }
 }

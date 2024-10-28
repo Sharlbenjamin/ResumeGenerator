@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Personal;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Country;
 use Livewire\Component;
 
 class CreatePersonal extends Component
@@ -11,11 +12,14 @@ class CreatePersonal extends Component
     public $personal;
     
     public $user;
+    public $countries;
     public $first_name;
     public $last_name;
     public $middle_name;
     public $first_phone;
+    public $first_phone_country_id;
     public $second_phone;
+    public $second_phone_country_id;
     public $email;
     public $address;
     public $date_of_birth;
@@ -54,7 +58,9 @@ class CreatePersonal extends Component
                 'last_name' => $this->last_name,
                 'middle_name' => $this->middle_name,
                 'first_phone' => $this->first_phone,
+                'first_phone_country_id' => $this->first_phone_country_id,
                 'second_phone' => $this->second_phone,
+                'second_phone_country_id' => $this->second_phone_country_id,
                 'email' => $this->email,
                 'address' => $this->address,
                 'date_of_birth' => $this->date_of_birth ? $this->date_of_birth : null,
@@ -76,7 +82,9 @@ class CreatePersonal extends Component
                 'last_name' => $this->last_name,
                 'middle_name' => $this->middle_name,
                 'first_phone' => $this->first_phone,
+                'first_phone_country_id' => $this->first_phone_country_id,
                 'second_phone' => $this->second_phone,
+                'second_phone_country_id' => $this->second_phone_country_id,
                 'email' => $this->email,
                 'address' => $this->address,
                 'date_of_birth' => $this->date_of_birth,
@@ -97,12 +105,15 @@ class CreatePersonal extends Component
 
     public function mount()
     {
+        $this->countries = Country::all();
         if($this->personal){
             $this->first_name = $this->personal->first_name;
             $this->last_name = $this->personal->last_name;
             $this->middle_name = $this->personal->middle_name;
             $this->first_phone = $this->personal->first_phone;
+            $this->first_phone_country_id = $this->personal->first_phone_country_id;
             $this->second_phone = $this->personal->second_phone;
+            $this->second_phone_country_id = $this->personal->second_phone_country_id;
             $this->email = $this->personal->email;
             $this->address  = $this->personal->address;
             $this->date_of_birth    = $this->personal->date_of_birth ? $this->personal->date_of_birth->format('Y-m-d') : '';

@@ -14,9 +14,9 @@
             </div>
             <div>
                 <p class="font-bold">Phone</p>
-                <p class="text-sm">{{$selectedPersonal->first_phone}}</p>
+                <p class="text-sm">+{{App\Models\Country::find($selectedPersonal->first_phone_country_id)->phonecode}}{{$selectedPersonal->first_phone}}</p>
                 @if($selectedPersonal->second_phone)
-                    <p class="text-sm">{{$selectedPersonal->second_phone}}</p>
+                    <p class="text-sm">+{{App\Models\Country::find($selectedPersonal->second_phone_country_id)->phonecode}}{{$selectedPersonal->second_phone}}</p>
                 @endif
             </div>
             <div>
@@ -54,11 +54,11 @@
         <div class="col-span-3 p-4 space-y-4 {{$resumeBg}}">
             @if($selectedSkills->count() > 0)
             <div class="border-b-2 {{$resumeBorder}}">
-                <p class="text-md font-bold text-black">Skills</p>
+                <p class="text-md font-bold text-white">Skills</p>
             </div>
             @foreach ($selectedSkills as $skill)
             <div class="grid grid-cols-3">
-                <p class="text-wrap text-xs text-black font-bold">{{$skill->name}}</p>
+                <p class="text-wrap text-xs text-white font-bold">{{$skill->name}}</p>
                 <div class="col-span-2 my-auto">
                     <div class="rounded-full bg-gray-200">
                         @if ($skill->level == 'Beginner')
@@ -78,11 +78,11 @@
 
             @if ($selectedLanguages->count() > 0)
             <div class="border-b-2 {{$resumeBorder}} mt-6">
-                <p class="text-md text-black font-bold ">Languages</p>
+                <p class="text-md text-white font-bold ">Languages</p>
             </div>
             @foreach ($selectedLanguages as $language)
             <div class="flex justify-between">
-                <p class="text-wrap text-xs text-black font-bold">{{$language->name}}</p>
+                <p class="text-wrap text-xs text-white font-bold">{{$language->name}}</p>
                 <p class="text-wrap text-xs text-black font-bold">{{$language->level}}</p>
             </div>
             @endforeach

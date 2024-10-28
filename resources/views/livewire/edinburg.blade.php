@@ -20,8 +20,8 @@
             {{-- phones --}}
             <div class="pt-4 pl-4 pr-4">
                 <h2 class="text-white font-bold">Phone Number</h2>
-                <p class="text-white">{{$selectedPersonal->first_phone}}</p>
-                <p class="text-white text-wrap">{{$selectedPersonal->second_phone}}</p>
+                <p class="text-white">+{{App\Models\Country::find($selectedPersonal->first_phone_country_id)->phonecode}}{{$selectedPersonal->first_phone}}</p>
+                <p class="text-white">+{{App\Models\Country::find($selectedPersonal->second_phone_country_id)->phonecode}}{{$selectedPersonal->second_phone}}</p>
             </div>
             {{-- Links --}}
             <div class="pt-4 pl-4 pr-4">

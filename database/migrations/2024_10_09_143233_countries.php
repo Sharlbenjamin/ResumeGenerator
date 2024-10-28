@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->id();
-            $table->char('iso', 2);
-            $table->string('name', 100);
-            $table->string('nicename', 100);
-            $table->char('iso3', 3)->nullable()->default('');
-            $table->char('numcode', 6)->nullable()->default('');
-            $table->char('phonecode', 5);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('countries')) {
+            Schema::create('countries', function (Blueprint $table) {
+                $table->id();
+                $table->char('iso', 2);
+                $table->string('name', 100);
+                $table->string('nicename', 100);
+                $table->char('iso3', 3)->nullable()->default('');
+                $table->char('numcode', 6)->nullable()->default('');
+                $table->char('phonecode', 5);
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('countries');
     }
 };

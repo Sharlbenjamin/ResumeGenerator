@@ -12,10 +12,10 @@
         <h3 class="font-bold text-xl">{{$selectedPersonal->title}}</h3>
         <h2 class="mt-2 font-medium text-md">
             <x-heroicon-o-phone class="inline h-4"/>
-            {{$selectedPersonal->first_phone}}</h2>
+            +{{App\Models\Country::find($selectedPersonal->first_phone_country_id)->phonecode}}{{$selectedPersonal->first_phone}}</h2>
         <h2 class="mt-2 font-medium text-md">
             <x-heroicon-o-phone class="inline h-4"/>
-            {{$selectedPersonal->second_phone}}</h2>
+            +{{App\Models\Country::find($selectedPersonal->second_phone_country_id)->phonecode}}{{$selectedPersonal->second_phone}}</h2>
     </div>
     @endif
     <div class="col-span-4 px-10">

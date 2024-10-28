@@ -1,0 +1,125 @@
+sudo yum update -y
+
+
+sudo yum install -y httpd
+
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+
+sudo amazon-linux-extras enable php8.2
+
+sudo yum install -y php php-cli php-fpm php-json php-common php-mbstring php-xml php-mysqlnd
+
+php -v
+
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+sudo mv composer.phar /usr/local/bin/composer
+
+
+                    # To Clone the Repository   
+sudo yum install git -y
+
+git clone https://github.com/sharlbenjamin/resumegenerator.git /var/www/html/resumegenerator
+
+cd /var/www/html/resumegenerator
+
+
+                    # to create a new project 
+sudo chown -R ec2-user:apache /var/www/html
+sudo chmod -R 775 /var/www/html
+
+cd  /var/www/html
+composer create-project --prefer-dist laravel/laravel resumegenerator
+
+sudo chown -R apache:apache /var/www/html/resumegenerator
+sudo chmod -R 775 /var/www/html/resumegenerator/storage
+sudo chmod -R 775 /var/www/html/resumegenerator/bootstrap/cache
+
+sudo vi /etc/httpd/conf/httpd.conf
+
+
+# add at the end of the file
+
+<VirtualHost *:80>
+    ServerName resumesgenerator.com
+    DocumentRoot /var/www/html/resumegenerator/public
+
+    <Directory /var/www/html/resumegenerator>
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+
+sudo php artisan key:generate
+
+sudo chown -R apache:apache /var/www/html/resumegenerator
+sudo chmod -R 775 /var/www/html/resumegenerator/storage
+sudo chmod -R 775 /var/www/html/resumegenerator/bootstrap/cache
+sudo chown -R ec2-user:apache /var/www/html/resumegenerator
+
+
+sudo systemctl restart httpd
+sudo systemctl enable httpd
+
+the next step is to edit the .env file and add the database credentials
+
+1) create RDS instance and link it to the ec2 instance and copy the credentails and create an initial database
+
+2) edit the .env file and add the database credentials
+
+php artisan migrate
+
+Then for HTTPS connection
+
+1) create a certificate from AWS Certificate Manager
+2) create route53 records for the certificate
+3) copy the DNS nameservers to the domain holder
+
+create ELB and link the certificate to the ELB
+create target group and add the ec2 instance to the target group
+create listener and select the certificate and port 443
+
+
+
+then for my normal laravel projects 
+
+1) install node js
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+
+exit and re log in 
+
+source ~/.nvm/nvm.sh
+nvm install node
+nvm install 18
+nvm use 18
+nvm alias default 18
+rm -rf node_modules package-lock.json
+npm install
+npm run build
+npm run dev
+
+
+
+sudo chown -R apache:apache /var/www/html/resumegenerator
+sudo chmod -R 775 /var/www/html/resumegenerator/storage
+sudo chmod -R 775 /var/www/html/resumegenerator/bootstrap/cache
+sudo chown -R ec2-user:apache /var/www/html/resumegenerator
+
+npm install
+npm run build
+
+
+
+
+
+
+# Install Docker
+
+sudo amazon-linux-extras install docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
